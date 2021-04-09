@@ -27,5 +27,6 @@ module.exports = Object.freeze({
     KEY: 'author',
     NAME: 'Tomas',
     LASTNAME: 'Damianovich'
-  }
+  },
+  RESULTS_PER_PAGE: 4
 });
