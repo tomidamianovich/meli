@@ -69,18 +69,7 @@ export class ProductDetail extends React.Component {
 
   render() {
     const { isLoading, data } = this.state;
-    const { author, item, status } = data;
-    const { name, lastname } = author;
-    const {
-      id,
-      title,
-      price,
-      picture,
-      condition,
-      free_shipping,
-      sold_quantity,
-      description,
-    } = item;
+    const { item, status } = data;
     return (
       <div className="ui-product-detail">
         <p className="ui-product-detail__title">PRODUCT DETAIL PAGE</p>
@@ -88,40 +77,48 @@ export class ProductDetail extends React.Component {
           <p>loading...</p>
         ) : (
           <div className="ui-product-detail__body">
-            {!data || !status || (status === 404 && <p>Error with status{data.status}</p>)}
+            {!data || !status || (status === 404 && <p>Product not Found. Error: {data.status}</p>)}
             {data && item && (
               <div>
                 <p className="ui-product-detail__body__title">AUTOR:</p>
                 <p className="ui-product-detail__body__description">
-                  Name: {name}
+                  Name: {author.name}
                 </p>
                 <p className="ui-product-detail__body__description">
-                  Lastname: {lastname}
+                  Lastname: {author.lastname}
                 </p>
+                <p className="ui-product-detail__body__title">BREADCRUMBS:</p>
+                {
+                  breadcrumbs_route.map((breadcrumb, index) => 
+                    <p className="ui-product-detail__body__description" key={index}>
+                      {breadcrumb.name} {'>'}
+                    </p>
+                  )
+                }
                 <p className="ui-product-detail__body__title">ITEM:</p>
                 <p className="ui-product-detail__body__description">id: {id}</p>
                 <p className="ui-product-detail__body__description">
-                  title: {title}
+                  title: {item.title}
                 </p>
                 <p className="ui-product-detail__body__description">
-                  price.currency: {price.currency}
-                  price.amount: {price.amount}
-                  price.decimals: {price.decimals}
+                  price.currency: {item.price.currency}
+                  price.amount: {item.price.amount}
+                  price.decimals: {item.price.decimals}
                 </p>
                 <p className="ui-product-detail__body__description">
-                  picture: {picture}
+                  picture: {item.picture}
                 </p>
                 <p className="ui-product-detail__body__description">
-                  condition: {condition}
+                  condition: {item.condition}
                 </p>
                 <p className="ui-product-detail__body__description">
-                  shipping: {`${free_shipping}`}
+                  shipping: {`${item.free_shipping}`}
                 </p>
                 <p className="ui-product-detail__body__description">
-                  sold_quantity: {sold_quantity}
+                  sold_quantity: {item.sold_quantity}
                 </p>
                 <p className="ui-product-detail__body__description">
-                  description: {description}
+                  description: {item.description}
                 </p>
               </div>
             )}
