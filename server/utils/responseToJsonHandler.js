@@ -53,7 +53,7 @@ function getProductListHandler (response) {
   /* From the endpoint a lot of filters are currently coming, we need the info coming
      as categories so we are filtering the categories filter and the making a js reduce 
      operation in order to get the sting name of each category available. */
-  let categories = dataParsed.available_filters.find(
+  let categories = dataParsed.filters.find(
     (filter) => filter.id === constants.MELI_API_URLS.FILTERS.CATEGORY
   );
   categories =
@@ -64,7 +64,22 @@ function getProductListHandler (response) {
         )
       : [];
 
-  let items = dataParsed.results.reduce((acc, curItem) => {
+  /*
+    Getting just the first elements of the array of products that comes from the response
+    of the endpoint due to a client requiment, in the future we could add a paginator in the 
+    client side and make and endpoint that accepts ?page as a query strings param.
+
+    I research for a better and performant way (we still retrieving from the BE tons of
+    products and the slicing the results) to do this but i didnt found in the meli APIS a
+    page filter that also allow me to add amount of products per page or something like that. 
+
+    The pages already loaded in the client side should be stored in a state manager like 
+    context API, apollo, redux, etc. in order to avoid calling again the endpoin
+  */
+  const firstPageItems = dataParsed.results.length
+    ? dataParsed.results.slice(0, constants.RESULTS_PER_PAGE)
+    : []
+  let items = firstPageItems.reduce((acc, curItem) => {
     const {
       id,
       title,
