@@ -77,17 +77,27 @@ app.get("/api/items/:id", function (req, res) {
           responses = [...responses, JSON.parse(data)];
           completed_requests++;
           if (completed_requests !== urls.length) return
-          const itemIdResponse = responses.findIndex((item) => item.id);
+          const itemResponse = responses.findIndex((item) => item.id);
           // If the item id wasnt found, return 404
-          if (itemIdResponse < 0) {
+          if (itemResponse < 0) {
             res.status(404).send(responses[0]);
             res.end();
             return;
           }
-          // All download done, process responses array
-          const { plain_text } = responses[itemIdResponse === 0 ? 1 : 0];
-          res.status(200).json(getProductDetailHandler(responses[itemIdResponse], plain_text));
-          res.end();
+          // We retrieve path_from_root from categories endpoint to show breadcrumbs 
+
+          https.get(`https://api.mercadolibre.com/categories/${responses[itemResponse].category_id}`, function (resp) {
+            let newData = "";
+            // A chunk of data has been received.
+            resp.on("data", (chunk) => newData += chunk);
+            resp.on("end", () => {
+              let categoryResponse = JSON.parse(newData)
+              // If ItemResponse is 0 means that plain text is in the other response
+              const { plain_text } = responses[itemResponse === 0 ? 1 : 0];
+              res.status(200).json(getProductDetailHandler(responses[itemResponse], plain_text, categoryResponse));
+              res.end();
+            })
+          })
         })
         .on("error", (err) => res.status(404).send(err));
     });

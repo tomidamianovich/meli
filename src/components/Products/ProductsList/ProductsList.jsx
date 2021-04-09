@@ -75,7 +75,7 @@ export class ProductsList extends React.Component {
   render() {
     const { isLoading, data } = this.state;
     const { name, lastname } = this.state.data.author;
-    const { categories, items } = this.state.data;
+    const { categories, items, breadcrumbs_route } = this.state.data;
     return (
       <div className="ui-product-detail">
         <p className="ui-product-detail__title">PRODUCT LIST PAGE</p>
@@ -83,10 +83,10 @@ export class ProductsList extends React.Component {
           "loading..."
         ) : (
           <div className="ui-product-detail__body">
-            {!data || !("status" in data) || data.status === 404 && (
-              <div>Error {data.status} </div>
+            {(!data || !items.length || data.status === 404) && (
+              <div>Not items found {data.status} </div>
             )}
-            {data && (
+            {data && !!items.length && (
               <div>
                 <p className="ui-product-detail__body__title">
                   AUTOR:
@@ -97,6 +97,14 @@ export class ProductsList extends React.Component {
                 <p className="ui-product-detail__body__description">
                   Lastname: {lastname}
                 </p>
+                <p className="ui-product-detail__body__title">
+                  breadcrumbs results:
+                </p>
+                { breadcrumbs_route.map((breadcrumb, index) => 
+                  <p className="ui-product-detail__body__description" key={index}>
+                    { breadcrumb.name } {'>'}
+                  </p>
+                )}
                 <p className="ui-product-detail__body__title">
                   CATEGORIAS:
                 </p>

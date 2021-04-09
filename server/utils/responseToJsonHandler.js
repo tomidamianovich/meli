@@ -6,7 +6,7 @@ const { NAME, LASTNAME } = constants.AUTHOR
   returns the data in the required structure that the web app needs.
 */
 
-function getProductDetailHandler (response, plainText) {
+function getProductDetailHandler (response, plainText, categories) {
   // All download done, process responses array
   const {
     id,
@@ -16,9 +16,8 @@ function getProductDetailHandler (response, plainText) {
     thumbnail,
     condition,
     shipping,
-    sold_quantity,
+    sold_quantity
   } = response;
-
   return {
     author: {
       name: NAME,
@@ -42,7 +41,8 @@ function getProductDetailHandler (response, plainText) {
       // Some descriptions values were coming with \n line breaks despite of parsing the data
       description: plainText.length
         ? plainText.replace(/(\r\n|\n|\r)/g, "")
-        : plainText
+        : plainText,
+      breadcrumbs_route: categories.path_from_root
     },
   };
 }
@@ -56,13 +56,17 @@ function getProductListHandler (response) {
   let categories = dataParsed.filters.find(
     (filter) => filter.id === constants.MELI_API_URLS.FILTERS.CATEGORY
   );
-  categories =
-    categories && constants.MELI_API_URLS.FILTERS.CATEGORY_KEY in categories
-      ? categories.values.reduce(
-          (acc, curVal) => [...acc, curVal.name],
-          []
-        )
-      : [];
+  
+  let greatherResultsCategory = []
+  if (categories && "values" in categories) {
+    /* For the breadcrumbs we need the category with more appeareances */
+    greatherResultsCategory = categories.values.reduce((a,b)=> a.results > b.results ? a:b )
+    greatherResultsCategory = "path_from_root" in greatherResultsCategory 
+      ? greatherResultsCategory.path_from_root 
+      : []
+    /* Categories string names array */
+    categories = categories.values.reduce((acc, curVal) => [...acc, curVal.name],[]);
+  }
 
   /*
     Getting just the first elements of the array of products that comes from the response
@@ -111,8 +115,9 @@ function getProductListHandler (response) {
       name: NAME,
       lastname: LASTNAME,
     },
-    categories: categories,
+    categories: categories ? categories : [],
     items: items,
+    breadcrumbs_route: greatherResultsCategory
   };
 }
 
