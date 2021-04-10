@@ -3,6 +3,8 @@ import axios from "axios";
 import { urlGetter } from "../../../utils/urlGetter";
 import { constants } from "../../../utils/constants";
 import { SearchForm } from "../../Main/SearchForm";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
 export class ProductDetail extends React.Component {
   constructor(props) {
@@ -83,9 +85,14 @@ export class ProductDetail extends React.Component {
               <div>
                 {
                   item.breadcrumbs_route.map((breadcrumb, index) => 
-                    <p className="ui-product-detail__body__description" key={index}>
-                      {breadcrumb.name} {'>'}
-                    </p>
+                    <>
+                      <span className="ui-product-detail__body__description" key={index}>
+                        {breadcrumb.name} asdalsd
+                      </span>
+                      { item.breadcrumbs_route.length === index &&
+                        <FontAwesomeIcon icon={faChevronRight} />
+                      }
+                    </>
                   )
                 }
                 <p className="ui-product-detail__body__title">ITEM:</p>

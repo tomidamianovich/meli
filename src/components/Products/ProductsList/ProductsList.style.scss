@@ -1,6 +1,6 @@
 @import "../../../utils/colours";
 
-.ui-product {
+.ui-product-list {
   width: 100%;
 
   &__title {
@@ -10,10 +10,12 @@
   }
 
   &__body {
-    padding: 20px;
-    border-radius: 5px;
+    width: 70vw;
+    margin: auto;
     background-color: $secondary;
-    color: $light;
-    text-align: center;
+    color: $dark;
+    &__items-container {
+      margin-bottom: 6rem;
+    }
   }
 }
