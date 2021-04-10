@@ -1,35 +1,47 @@
-import React, {useEffect, useState} from "react";
-import { constants } from '../../../utils/constants'
+import React, { useEffect, useState } from "react";
+import { constants } from "../../../utils/constants";
+import { useLocation } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
-export const SearchForm = ({ inputPlaceholder }) => {
-  const [searchValue, setSeachValue] = useState('')
-  const [actionValue, setActionValue] = useState('')
+export const SearchForm = ({
+  inputPlaceholder = constants.SEARCH.PLACEHOLDER_INPUT,
+  initialValue = "",
+}) => {
+  const [searchValue, setSeachValue] = useState("");
+  const [actionValue, setActionValue] = useState("");
 
   const handleChangeValue = (event) => {
-    event.preventDefault()
-    setSeachValue(event.target.value)
-  }
+    event.preventDefault();
+    setSeachValue(event.target.value);
+  };
 
   useEffect(() => {
-    setActionValue(`${window.location}${constants.MELI_WEB.ITEMS_PATH}`)
-  }, [])
+    setActionValue(`${window.location}${constants.MELI_WEB.ITEMS_PATH}`);
+    setSeachValue(initialValue);
+  }, []);
 
   return (
     <div className="ui-search">
-      <p className="ui-search__title">Search Form Page</p>
-      <div className="ui-search__body">
-        <form action={actionValue} method="get">
+      <form className="ui-search__form" action={actionValue} method="get">
+        <a href="#" className="ui-search__form__logo" />
+        <div className="ui-search__form__input-container">
           <input
+            className="ui-search__form__input-container__input"
             name={constants.MELI_WEB.SEARCH_QUERY_STRING}
             placeholder={inputPlaceholder}
             onChange={handleChangeValue}
             value={searchValue}
           />
-          <button type="submit">
-            Submit
+          <button
+            type="submit"
+            disabled={searchValue === ""}
+            className="ui-search__form__input-container__submit"
+          >
+            <FontAwesomeIcon icon={faSearch} />
           </button>
-        </form>
-      </div>
+        </div>
+      </form>
     </div>
   );
 };

@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import { urlGetter } from "../../../utils/urlGetter";
 import { constants } from "../../../utils/constants";
+import { SearchForm } from "../../Main/SearchForm";
 
 export class ProductDetail extends React.Component {
   constructor(props) {
@@ -72,7 +73,7 @@ export class ProductDetail extends React.Component {
     const { item, status } = data;
     return (
       <div className="ui-product-detail">
-        <p className="ui-product-detail__title">PRODUCT DETAIL PAGE</p>
+        <SearchForm initialValue={this.getInitialValue} />
         {isLoading ? (
           <p>loading...</p>
         ) : (
@@ -80,23 +81,17 @@ export class ProductDetail extends React.Component {
             {!data || !status || (status === 404 && <p>Product not Found. Error: {data.status}</p>)}
             {data && item && (
               <div>
-                <p className="ui-product-detail__body__title">AUTOR:</p>
-                <p className="ui-product-detail__body__description">
-                  Name: {author.name}
-                </p>
-                <p className="ui-product-detail__body__description">
-                  Lastname: {author.lastname}
-                </p>
-                <p className="ui-product-detail__body__title">BREADCRUMBS:</p>
                 {
-                  breadcrumbs_route.map((breadcrumb, index) => 
+                  item.breadcrumbs_route.map((breadcrumb, index) => 
                     <p className="ui-product-detail__body__description" key={index}>
                       {breadcrumb.name} {'>'}
                     </p>
                   )
                 }
                 <p className="ui-product-detail__body__title">ITEM:</p>
-                <p className="ui-product-detail__body__description">id: {id}</p>
+                <p className="ui-product-detail__body__description">
+                  id: {item.id}
+                </p>
                 <p className="ui-product-detail__body__description">
                   title: {item.title}
                 </p>
