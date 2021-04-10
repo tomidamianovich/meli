@@ -2,6 +2,8 @@ import React from "react";
 import axios from "axios";
 import { urlGetter } from '../../../utils/urlGetter'
 import { constants } from '../../../utils/constants'
+import { SearchForm } from '../../Main/SearchForm'
+import { useLocation } from "react-router-dom";
 
 export class ProductsList extends React.Component {
   constructor(props) {
@@ -32,6 +34,8 @@ export class ProductsList extends React.Component {
         data: {},
       };
     }
+    this.getInitialValue = this.getInitialValue.bind(this);
+    // this.getItemsPath = this.getItemsPath.bind(this);
   }
 
   // fetch data
@@ -60,6 +64,11 @@ export class ProductsList extends React.Component {
       });
   }
 
+  getInitialValue() {
+    let query = new URLSearchParams(useLocation().search);
+    return query.get('search')
+  }
+
   // when component mounts, fetch data
   componentDidMount() {
     // If the current "isLoading" state value is false, we dont fetch the data.
@@ -78,7 +87,7 @@ export class ProductsList extends React.Component {
     const { categories, items, breadcrumbs_route } = this.state.data;
     return (
       <div className="ui-product-detail">
-        <p className="ui-product-detail__title">PRODUCT LIST PAGE</p>
+        <SearchForm initialValue={this.getInitialValue} />
         {isLoading ? (
           "loading..."
         ) : (
@@ -88,18 +97,6 @@ export class ProductsList extends React.Component {
             )}
             {data && !!items.length && (
               <div>
-                <p className="ui-product-detail__body__title">
-                  AUTOR:
-                </p>
-                <p className="ui-product-detail__body__description">
-                  Name: {name}
-                </p>
-                <p className="ui-product-detail__body__description">
-                  Lastname: {lastname}
-                </p>
-                <p className="ui-product-detail__body__title">
-                  breadcrumbs results:
-                </p>
                 { breadcrumbs_route.map((breadcrumb, index) => 
                   <p className="ui-product-detail__body__description" key={index}>
                     { breadcrumb.name } {'>'}
@@ -121,6 +118,7 @@ export class ProductsList extends React.Component {
                     <p className="ui-product-detail__body__title">
                       ITEMS ID #{item.id}
                     </p>
+                    <a href={`/items/${item.id}`}> Go to Product ${item.id} Detail</a>
                     <p className="ui-product-detail__body__description">
                      title: {item.title}
                     </p>
