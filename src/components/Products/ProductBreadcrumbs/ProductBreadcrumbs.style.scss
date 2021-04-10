@@ -1,0 +1,21 @@
+@import "../../../utils/colours.scss";
+
+.ui-breadcrumbs-container {
+  margin: 16px 0;
+  display: flex;
+  flex-wrap: wrap;
+  &__breadcrumbs__item {
+    color: $lightgrey;
+    font-size: 14px;
+    white-space: nowrap;
+    :last-child {
+      font-weight: 700;
+    }
+    &__next-item {
+      color: $lightgrey;
+      font-size: 0.8rem;
+      width: 0.5em;
+      margin: 0.1rem 0.5rem;
+    }
+  }
+}

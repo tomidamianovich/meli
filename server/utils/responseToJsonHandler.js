@@ -92,6 +92,7 @@ function getProductListHandler (response) {
       thumbnail,
       condition,
       shipping,
+      address
     } = curItem;
     var newItem = {
       id: id,
@@ -106,6 +107,7 @@ function getProductListHandler (response) {
       free_shipping: constants.MELI_API_URLS.SHIPPING.FREE_SHIPING in shipping 
         ? shipping.free_shipping
         : undefined,
+      province: address.state_name
     };
     return [...acc, newItem];
   }, []);
