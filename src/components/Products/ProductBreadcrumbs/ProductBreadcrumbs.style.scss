@@ -1,6 +1,8 @@
 @import "../../../utils/colours.scss";
+@import '../../../utils/font.scss';
 
 .ui-breadcrumbs-container {
+  @include appfont;
   margin: 16px 0;
   display: flex;
   flex-wrap: wrap;

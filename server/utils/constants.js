@@ -23,10 +23,15 @@ module.exports = Object.freeze({
       FREE_SHIPING: 'free_shipping'
     }
   },
+  APP_URL: {
+    PATH: 'http://localhost',
+    PORT: '9000'
+  },
   AUTHOR: {
     KEY: 'author',
     NAME: 'Tomas',
     LASTNAME: 'Damianovich'
   },
-  RESULTS_PER_PAGE: 4
+  RESULTS_PER_PAGE: 4,
+  
 });

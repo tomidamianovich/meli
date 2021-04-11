@@ -1,8 +1,10 @@
 @import '../../../utils/colours';
+@import '../../../utils/colours';
+@import '../../../utils/font.scss';
 
 .home-app {
+  @include appfont;
   padding: 0;
-  font-family: sans-serif;
 
   // navigation
   &__navigation {

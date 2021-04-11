@@ -1,7 +1,9 @@
 @import "../../../utils/colours.scss";
+@import '../../../utils/font.scss';
 
 .ui-product-item {
-  background-color: $light;
+  @include appfont;
+  background-color: $white;
   padding: 0;
   margin: 0;
   border-bottom: 1px solid $secondary;

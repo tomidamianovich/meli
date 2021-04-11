@@ -26,7 +26,8 @@ export class Home extends React.Component {
             path="/"
             exact={true}
             render={() => (
-              <SearchForm inputPlaceholder={constants.SEARCH.PLACEHOLDER_INPUT} />
+              <SearchForm
+                inputPlaceholder={constants.SEARCH.PLACEHOLDER_INPUT} />
             )}
           />
           <Route

@@ -6,9 +6,9 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 export const SearchForm = ({
   inputPlaceholder = constants.SEARCH.PLACEHOLDER_INPUT,
   initialValue = "",
+  actionValue
 }) => {
   const [searchValue, setSeachValue] = useState("");
-  const [actionValue, setActionValue] = useState("");
 
   const handleChangeValue = (event) => {
     event.preventDefault();
@@ -16,13 +16,12 @@ export const SearchForm = ({
   };
 
   useEffect(() => {
-    setActionValue(`${window.location}${constants.MELI_WEB.ITEMS_PATH}`);
     setSeachValue(initialValue);
-  }, []);
+  }, [initialValue, constants, setSeachValue]);
 
   return (
     <div className="ui-search">
-      <form className="ui-search__form" action={actionValue} method="get">
+      <form className="ui-search__form" action={actionValue || 'items'} method="get">
         <a href="#" className="ui-search__form__logo" />
         <div className="ui-search__form__input-container">
           <input
@@ -34,7 +33,6 @@ export const SearchForm = ({
           />
           <button
             type="submit"
-            disabled={searchValue === ""}
             className="ui-search__form__input-container__submit"
           >
             <FontAwesomeIcon icon={faSearch} />

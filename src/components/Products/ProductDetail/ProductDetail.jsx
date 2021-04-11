@@ -3,8 +3,9 @@ import axios from "axios";
 import { urlGetter } from "../../../utils/urlGetter";
 import { constants } from "../../../utils/constants";
 import { SearchForm } from "../../Main/SearchForm";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import { ProductBreadcrumbs } from "../ProductBreadcrumbs"
+import { ProductDetailInfo } from "../ProductDetailInfo"
+import { ProductNotFound } from "../ProductNotFound"
 
 export class ProductDetail extends React.Component {
   constructor(props) {
@@ -72,56 +73,27 @@ export class ProductDetail extends React.Component {
 
   render() {
     const { isLoading, data } = this.state;
-    const { item, status } = data;
+    const { item, status, appUrl } = data;
     return (
       <div className="ui-product-detail">
-        <SearchForm initialValue={this.getInitialValue} />
+        <SearchForm
+          initialValue={this.getInitialValue}
+          actionValue={appUrl}
+          />
         {isLoading ? (
           <p>loading...</p>
         ) : (
           <div className="ui-product-detail__body">
-            {!data || !status || (status === 404 && <p>Product not Found. Error: {data.status}</p>)}
+            {(!data || status === 404) && 
+              <ProductNotFound
+                message={constants.PRODUCT_NOT_FOUND.MESSAGE}
+                variant={constants.PRODUCT_NOT_FOUND.VARIANT}
+              />
+            }
             {data && item && (
               <div>
-                {
-                  item.breadcrumbs_route.map((breadcrumb, index) => 
-                    <>
-                      <span className="ui-product-detail__body__description" key={index}>
-                        {breadcrumb.name} asdalsd
-                      </span>
-                      { item.breadcrumbs_route.length === index &&
-                        <FontAwesomeIcon icon={faChevronRight} />
-                      }
-                    </>
-                  )
-                }
-                <p className="ui-product-detail__body__title">ITEM:</p>
-                <p className="ui-product-detail__body__description">
-                  id: {item.id}
-                </p>
-                <p className="ui-product-detail__body__description">
-                  title: {item.title}
-                </p>
-                <p className="ui-product-detail__body__description">
-                  price.currency: {item.price.currency}
-                  price.amount: {item.price.amount}
-                  price.decimals: {item.price.decimals}
-                </p>
-                <p className="ui-product-detail__body__description">
-                  picture: {item.picture}
-                </p>
-                <p className="ui-product-detail__body__description">
-                  condition: {item.condition}
-                </p>
-                <p className="ui-product-detail__body__description">
-                  shipping: {`${item.free_shipping}`}
-                </p>
-                <p className="ui-product-detail__body__description">
-                  sold_quantity: {item.sold_quantity}
-                </p>
-                <p className="ui-product-detail__body__description">
-                  description: {item.description}
-                </p>
+                <ProductBreadcrumbs route={item.breadcrumbs_route} />
+                <ProductDetailInfo item={item} />
               </div>
             )}
           </div>
