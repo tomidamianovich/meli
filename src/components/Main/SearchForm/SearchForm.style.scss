@@ -1,14 +1,16 @@
 @import '../../../utils/colours.scss';
 @import '../../../utils/screens.scss';
+@import '../../../utils/font.scss';
 
 .ui-search {
+  @include appfont;
   width: 100%;
   background-color: $primary;
 
   &__form {
     padding: 0.7rem 0.07rem;
     background-color: $primary;
-    color: $light;
+    color: $white;
     display: flex;
     justify-content: center;
     flex-direction: row;
@@ -26,6 +28,8 @@
       display: flex;
 
       &__input {
+        @include appfont;
+        font-weight: $light;
         padding: 0.5rem 0.9rem;
         max-width: 55rem;
         flex-grow: 9;

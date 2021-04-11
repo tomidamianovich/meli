@@ -39,11 +39,10 @@ function getProductDetailHandler (response, plainText, categories) {
           : undefined,
       sold_quantity: sold_quantity,
       // Some descriptions values were coming with \n line breaks despite of parsing the data
-      description: plainText.length
-        ? plainText.replace(/(\r\n|\n|\r)/g, "")
-        : plainText,
+      description: plainText,
       breadcrumbs_route: categories.path_from_root
     },
+    appUrl: `${constants.APP_URL.PATH}:${constants.APP_URL.PORT}/items`
   };
 }
 
@@ -119,7 +118,8 @@ function getProductListHandler (response) {
     },
     categories: categories ? categories : [],
     items: items,
-    breadcrumbs_route: greatherResultsCategory
+    breadcrumbs_route: greatherResultsCategory,
+    appUrl: `${constants.APP_URL.PATH}:${constants.APP_URL.PORT}/items`
   };
 }
 

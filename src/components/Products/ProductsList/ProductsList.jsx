@@ -6,6 +6,7 @@ import { SearchForm } from "../../Main/SearchForm";
 import { useLocation } from "react-router-dom";
 import { ProductBreadcrumbs } from "../ProductBreadcrumbs"
 import { ProductItem } from "../ProductItem"
+import { ProductNotFound } from "../ProductNotFound"
 
 export class ProductsList extends React.Component {
   constructor(props) {
@@ -88,16 +89,22 @@ export class ProductsList extends React.Component {
 
   render() {
     const { isLoading, data } = this.state;
-    const { items, breadcrumbs_route } = this.state.data;
+    const { items, breadcrumbs_route, appUrl } = this.state.data;
     return (
       <div className="ui-product-list">
-        <SearchForm initialValue={this.getInitialValue} />
+        <SearchForm
+          initialValue={this.getInitialValue}
+          actionValue={appUrl}
+          />
         {isLoading ? (
           "loading..."
         ) : (
           <div className="ui-product-list__body">
             {(!data || !items.length || data.status === 404) && (
-              <div>Not items found {data.status} </div>
+              <ProductNotFound
+                message={constants.ZERO_PRODUCTS_FOUND.MESSAGE}
+                variant={constants.ZERO_PRODUCTS_FOUND.VARIANT}
+              />
             )}
             {data && !!items.length && (
               <div className="ui-product-list__body__items-container">

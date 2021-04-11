@@ -1,6 +1,8 @@
 @import "../../../utils/colours";
+@import '../../../utils/font.scss';
 
 .ui-product-list {
+  @include appfont;
   width: 100%;
 
   &__title {

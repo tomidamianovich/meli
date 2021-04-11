@@ -1,0 +1,87 @@
+@import "../../../utils/colours";
+@import "../../../utils/font.scss";
+
+.ui-product-detail-info {
+  @include appfont;
+  background-color: $white;
+  border-radius: 4px;
+  &__main {
+    padding: 0;
+    margin: 0;
+    display: flex;
+
+    &__image-container {
+      width: 680px;
+      height: 680px;
+      margin: 0;
+      padding: 0;
+      &__image {
+        border-radius: 4px;
+        object-fit: contain;
+        width: inherit;
+        height: inherit;
+        object-fit: cover;
+      }
+    }
+
+    &__values {
+      width: calc(100% - 32px);
+      margin-left: 16px;
+      &--condition {
+        width: inherit;
+        font-size: 14px;
+        margin: 32px 0 16px 0;
+        font-weight: $regular;
+      }
+      &--title {
+        width: inherit;
+        font-size: 24px;
+        margin: 0;
+        font-weight: $medium;
+      }
+      &__price-container {
+        width: inherit;
+        margin: 32px 0;
+        &--amount {
+          font-size: 46px;
+          font-weight: $regular;
+        }
+        &--cents {
+          font-size: 22px;
+          vertical-align: top;
+        }
+      }
+      &__buy-button {
+        width: inherit;
+        background-color: #3483fa;
+        color: white;
+        border: 0;
+        outline: 0;
+        padding: 0.6rem;
+        font-size: 16px;
+        border-radius: 7px;
+        box-shadow: none;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__description {
+    padding: 32px;
+    display: block;
+    background-color: #fff;
+    margin-bottom: 6rem;
+
+    &__title {
+      font-size: 28px;
+      font-weight: 400;
+      margin-bottom: 32px;
+    }
+    &__value {
+      margin: 0;
+      white-space: pre-wrap;
+      color: #666666;
+      font-size: 16px;
+    }
+  }
+}
