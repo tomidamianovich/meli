@@ -20,7 +20,7 @@
       width: 90vw;
     }
     @media screen and (min-width: $small) {
-      width: 70vw;
+      width: 80vw;
     }
     
     &__input-container {
@@ -31,7 +31,6 @@
         @include appfont;
         font-weight: $light;
         padding: 0.5rem 0.9rem;
-        max-width: 55rem;
         flex-grow: 9;
         font-size: 18px; // 1.125rem
         border-radius: 0.125rem;
@@ -45,14 +44,15 @@
 
         @media screen and (max-width: $small) {
           width: 100%;
+          text-overflow: ellipsis;
         }
         @media screen and (min-width: $medium) {
-
+          text-overflow: ellipsis;
         }
       }
 
       &__submit  {
-        color: $lightgrey;
+        color: #666666;
         outline: 0;
         font-size: 18px;
         cursor: pointer;

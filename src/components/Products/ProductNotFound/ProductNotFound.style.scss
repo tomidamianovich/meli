@@ -9,15 +9,15 @@
   padding: 0.5rem;
   text-align: center;
   border-radius: 4px;
-  &--warning {
-    background-color: #ffe600;
+  &--info {
+    background-color: $lightgrey;
     &__text {
       font-size: 20px;
       color: white;
     }
   }
   &--default {
-    background-color: #999999;
+    background-color: $gray;
     &__text {
       font-size: 20px;
       color: white;

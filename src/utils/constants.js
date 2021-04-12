@@ -3,11 +3,15 @@ export const constants = {
     PLACEHOLDER_INPUT: 'Nunca dejes de buscar'
   },
   PRODUCT_NOT_FOUND: {
-    VARIANT: 'warning',
+    VARIANT: 'info',
     MESSAGE: 'El producto no fue encontrado, verifique el numero identificador ingresado.'
   },
+  LOADING: {
+    VARIANT: 'info',
+    MESSAGE: 'Cargando...'
+  },
   ZERO_PRODUCTS_FOUND: {
-    VARIANT: 'warning',
+    VARIANT: 'info',
     MESSAGE: 'No hemos encontrado ningun producto para tu busqueda.'
   },
   MELI_API: {
@@ -17,6 +21,5 @@ export const constants = {
   MELI_WEB: {
     SEARCH_QUERY_STRING: 'search',
     ITEMS_PATH: 'items'
-  },
-  BASE_URL: 'http://localhost:9000/items'
+  }
 }

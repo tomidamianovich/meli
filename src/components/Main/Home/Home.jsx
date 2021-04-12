@@ -1,7 +1,7 @@
 import React from "react";
 
 // imoport routing components
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 
 // import constants
 import { constants } from '../../../utils/constants'
@@ -40,6 +40,8 @@ export class Home extends React.Component {
             exact={true}
             render={(props) => <ProductDetail {...props} />}
           />
+          {/* If a not valid url is introduced we redirect to the main page. */}
+          <Redirect to="/" />
         </Switch>
       </div>
     );

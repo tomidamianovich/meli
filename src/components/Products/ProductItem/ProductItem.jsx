@@ -1,8 +1,7 @@
 import React from "react";
+import { getFormattedPrice } from "../../../utils/helpers";
 
-export const ProductItem = ({
-   item 
-  }) => {
+export const ProductItem = ({ item }) => {
   return (
     <div className="ui-product-item">
       <a href={`/items/${item.id}`}>
@@ -15,7 +14,7 @@ export const ProductItem = ({
         </div>
         <div className="ui-product-item__description-container">
           <p className="ui-product-item__description-container__value-price">
-            $ {item.price.amount}
+            {getFormattedPrice(item.price)}
           </p>
           <p className="ui-product-item__description-container__value-title">
             {item.title}
