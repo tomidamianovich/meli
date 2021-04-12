@@ -13,14 +13,14 @@
     background-color: $lightgrey;
     &__text {
       font-size: 20px;
-      color: white;
+      color: $white;
     }
   }
   &--default {
     background-color: $gray;
     &__text {
       font-size: 20px;
-      color: white;
+      color: $white;
     }
   }
 }

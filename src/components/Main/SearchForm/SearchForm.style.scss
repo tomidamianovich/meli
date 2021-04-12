@@ -52,7 +52,7 @@
       }
 
       &__submit  {
-        color: #666666;
+        color: $gray;
         outline: 0;
         font-size: 18px;
         cursor: pointer;
@@ -73,19 +73,13 @@
     }
 
     &__logo {
-      flex-shrink: 0;
-      width: 5rem;
-      flex-grow: 1;
+      margin: 0 2rem 0 0;
       height: 2.5rem;
-      background-position: center;
-      display: flex;
-      margin-top: 0.05rem;
-      align-items: center;
-      align-self: center;
-      background-image: url(https://http2.mlstatic.com/frontend-assets/ui-navigation/5.14.3/mercadolibre/logo__small@2x.png);
-      -webkit-background-size: 51px 35px;
-      background-size: 51px 35px;
-      background-repeat: no-repeat;
+      cursor: pointer;
+
+      @media screen and (max-width: $small) {
+        margin: 0 1rem 0 0;
+      }
     }
   }
 }

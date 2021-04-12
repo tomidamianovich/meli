@@ -1,3 +1,5 @@
+import { constants } from '../utils/constants'
+
 // Function that returns an endpoint URI based in the params that it recieves.
 const urlGetter = (baseUrl, path,  param) => `${baseUrl}${path}${param}`
 
@@ -18,9 +20,21 @@ const getFormattedCents = (price) => {
   return price.decimals === 0 ? '00' : price.decimals.toString().substring(2, 4)
 }
 
+const getLogoSrc = (module) => {
+  if (typeof module === "object") {
+    module = module.default;
+  }
+  if (typeof module === "undefined") {
+    const { PATH, PORT, LOGO, LOGO_FILE_TYPE } = constants.APP_URL
+    return `${PATH}:${PORT}/${LOGO}.${LOGO_FILE_TYPE}`
+  }
+  return module;
+}
+
 export {
   urlGetter,
   getFormattedPrice,
   getConditionAndSells,
-  getFormattedCents
+  getFormattedCents,
+  getLogoSrc
 }

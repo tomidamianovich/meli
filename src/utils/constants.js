@@ -21,5 +21,11 @@ export const constants = {
   MELI_WEB: {
     SEARCH_QUERY_STRING: 'search',
     ITEMS_PATH: 'items'
+  },
+  APP_URL: {
+    PATH: 'http://localhost',
+    PORT: '9000',
+    LOGO: 'e207e1130d27e8dfdd47b4177cb022e9',
+    LOGO_FILE_TYPE: 'png'
   }
 }

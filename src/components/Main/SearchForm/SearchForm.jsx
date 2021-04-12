@@ -2,11 +2,14 @@ import React, { useEffect, useState } from "react";
 import { constants } from "../../../utils/constants";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { getLogoSrc } from "../../../utils/helpers"
+const logo = require('../../../assets/logo.png')
 
 export const SearchForm = ({
   inputPlaceholder = constants.SEARCH.PLACEHOLDER_INPUT,
   initialValue = "",
-  actionValue
+  actionValue,
+  logoPath = constants.APP_LOGO
 }) => {
   const [searchValue, setSeachValue] = useState("");
 
@@ -21,12 +24,17 @@ export const SearchForm = ({
 
   return (
     <div className="ui-search">
-      <form className="ui-search__form" action={actionValue || 'items'} method="get">
-        <a href="#" className="ui-search__form__logo" />
+      <form
+        className="ui-search__form"
+        action={actionValue || "items"}
+        method="get"
+      >
+        <img src={getLogoSrc(logo)} alt="logo" className="ui-search__form__logo"  />
+        {/* <a href="#" className="ui-search__form__logo" /> */}
         <div className="ui-search__form__input-container">
           <input
             className="ui-search__form__input-container__input"
-            name={constants.MELI_WEB.SEARCH_QUERY_STRING}
+            name={constants.MELI_WEB.SEARCH_QUERY_STRING} 
             placeholder={inputPlaceholder}
             onChange={handleChangeValue}
             value={searchValue}

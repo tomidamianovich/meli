@@ -41,7 +41,7 @@ export class Home extends React.Component {
             render={(props) => <ProductDetail {...props} />}
           />
           {/* If a not valid url is introduced we redirect to the main page. */}
-          <Redirect to="/" />
+          {/* <Redirect to="/" /> */}
         </Switch>
       </div>
     );

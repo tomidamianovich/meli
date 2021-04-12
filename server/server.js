@@ -24,7 +24,7 @@ const app = express();
 
 // serve static assets
 app.get(
-  /\.(js|css|map|ico)$/,
+  /\.(js|css|map|ico|png)$/,
   express.static(path.resolve(__dirname, "../dist"))
 );
 
