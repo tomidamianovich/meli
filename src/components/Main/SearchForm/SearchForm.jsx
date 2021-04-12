@@ -6,21 +6,29 @@ import { getLogoSrc } from "../../../utils/helpers"
 import { Link } from "react-router-dom";
 const logo = require('../../../assets/logo.png')
 
+/*
+  This method is the main navbar of the application, it will be always visible so it will
+  be imported by all the components that the routes shows and allows us to search products
+  and to be redirected to main page when clicking on the app logo.
+*/
+
 export const SearchForm = ({
-  inputPlaceholder = constants.SEARCH.PLACEHOLDER_INPUT,
-  initialValue = "",
-  actionValue
+  inputPlaceholder = constants.SEARCH.PLACEHOLDER_INPUT, 
+  initialValue = "", // If we are coming for a previous search we inicialize this value.
+  actionValue // If we are currently in a previous search we need to handle the form action.
 }) => {
   const [searchValue, setSeachValue] = useState("");
 
+  // Each time the input changes his value we store the value in the component state.
   const handleChangeValue = (event) => {
     event.preventDefault();
     setSeachValue(event.target.value);
   };
 
+  // Initially setting the search value when the initial value is defined.
   useEffect(() => {
     setSeachValue(initialValue);
-  }, [initialValue, constants, setSeachValue]);
+  }, [initialValue, setSeachValue]);
 
   return (
     <div className="ui-search">

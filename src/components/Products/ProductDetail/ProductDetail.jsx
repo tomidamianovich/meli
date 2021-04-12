@@ -5,7 +5,13 @@ import { constants } from "../../../utils/constants";
 import { SearchForm } from "../../Main/SearchForm";
 import { ProductBreadcrumbs } from "../ProductBreadcrumbs";
 import { ProductDetailInfo } from "../ProductDetailInfo";
-import { ProductNotFound } from "../ProductNotFound";
+import { AlertMessage } from "../AlertMessage";
+
+/*
+  This method will show all the value details associated to a product, is class components
+  without hoooks due to we need to use componentdidmount that is not the same that useEffect
+  to use react server side rendering (Mainly the static method fetchData is needed).
+*/
 
 export class ProductDetail extends React.Component {
   constructor(props) {
@@ -85,7 +91,7 @@ export class ProductDetail extends React.Component {
         ) : (
           <div className="ui-product-detail__body">
             {(!data || status === 404) && (
-              <ProductNotFound
+              <AlertMessage
                 message={constants.PRODUCT_NOT_FOUND.MESSAGE}
                 variant={constants.PRODUCT_NOT_FOUND.VARIANT}
               />

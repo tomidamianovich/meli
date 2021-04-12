@@ -3,6 +3,10 @@ import { getFormattedPrice } from "../../../utils/helpers";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTruck } from "@fortawesome/free-solid-svg-icons";
 
+/*
+  This Method will recieve the product (item) as a props and will show the item values.
+*/
+
 export const ProductListItem = ({ item }) => {
   return (
     <div className="ui-product-item">

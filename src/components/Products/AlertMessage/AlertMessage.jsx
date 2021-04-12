@@ -1,6 +1,11 @@
 import React from "react";
 
-export const ProductNotFound = ({
+/*
+  This Method will recieve the a message and a variant as prop in order to show a proper
+  message to inform the user neccesary data. Ex: Zero results while searching.
+*/
+
+export const AlertMessage = ({
    message = "",
    variant = "default"
   }) => {
