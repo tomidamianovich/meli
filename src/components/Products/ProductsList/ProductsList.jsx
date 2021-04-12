@@ -5,7 +5,7 @@ import { constants } from "../../../utils/constants";
 import { SearchForm } from "../../Main/SearchForm";
 import { useLocation } from "react-router-dom";
 import { ProductBreadcrumbs } from "../ProductBreadcrumbs";
-import { ProductItem } from "../ProductItem";
+import { ProductListItem } from "../ProductListItem";
 import { ProductNotFound } from "../ProductNotFound";
 
 export class ProductsList extends React.Component {
@@ -107,7 +107,7 @@ export class ProductsList extends React.Component {
               <div className="ui-product-list__body__items-container">
                 <ProductBreadcrumbs route={breadcrumbs_route} />
                 {items.map((item) => (
-                  <ProductItem item={item} key={item.id} />
+                  <ProductListItem item={item} key={item.id} />
                 ))}
               </div>
             )}

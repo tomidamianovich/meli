@@ -75,6 +75,18 @@
         margin: 16px 0 32px 0;
       }
     }
+    &__free-shipping-icon {
+      background-color: $freeshipping;
+      color: $dark;
+      max-width: 1rem;
+      max-height: 1rem;
+      padding: 0.45rem 0.4rem;
+      font-size: .75rem;
+      border-radius: 4rem;
+      margin: 0 1rem;
+      position: relative;
+      top: 0.2rem;
+    }
   }
 
   &__province-container {

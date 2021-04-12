@@ -3,13 +3,13 @@ import { constants } from "../../../utils/constants";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { getLogoSrc } from "../../../utils/helpers"
+import { Link } from "react-router-dom";
 const logo = require('../../../assets/logo.png')
 
 export const SearchForm = ({
   inputPlaceholder = constants.SEARCH.PLACEHOLDER_INPUT,
   initialValue = "",
-  actionValue,
-  logoPath = constants.APP_LOGO
+  actionValue
 }) => {
   const [searchValue, setSeachValue] = useState("");
 
@@ -29,8 +29,12 @@ export const SearchForm = ({
         action={actionValue || "items"}
         method="get"
       >
-        <img src={getLogoSrc(logo)} alt="logo" className="ui-search__form__logo"  />
-        {/* <a href="#" className="ui-search__form__logo" /> */}
+        <Link to={{ pathname: "/" }}>
+          <img
+            src={getLogoSrc(logo)}
+            alt="logo"
+            className="ui-search__form__logo"  />
+        </Link>
         <div className="ui-search__form__input-container">
           <input
             className="ui-search__form__input-container__input"

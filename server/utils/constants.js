@@ -20,7 +20,7 @@ module.exports = Object.freeze({
       CATEGORY_KEY: 'values',
     },
     SHIPPING: {
-      FREE_SHIPING: 'free_shipping'
+      FREE_SHIPPING: 'free_shipping'
     }
   },
   APP_URL: {
