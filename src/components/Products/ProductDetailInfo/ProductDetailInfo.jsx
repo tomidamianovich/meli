@@ -1,24 +1,13 @@
 import React from "react";
+import { 
+  getConditionAndSells,
+  getFormattedPrice,
+  getFormattedCents
+ } from "../../../utils/helpers";
 
 export const ProductDetailInfo = ({
    item 
   }) => {
-
-  const getConditionAndSells = (condition, soldQuantity) => {
-    const itemCondition = condition === 'new' ? 'Nuevo' : 'Usado'
-    return `${itemCondition} - ${soldQuantity} vendidos`
-  }
-
-  const getFormattedPrice = (price) => {
-    if (!('amount' in price)) return "$ 00"
-    const amountFormatted = price.amount.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
-    return  `$ ${amountFormatted}`
-  }
-  
-  const getFormattedCents = (price) => {
-    if (!('decimals' in price)) return "00"
-    return price.decimals === 0 ? '00' : item.price.decimals.toString().substring(2, 4)
-  }
 
   const handleBuyProduct = (itemId) => {
     // Method that will handle and dispatch the buy process of a product

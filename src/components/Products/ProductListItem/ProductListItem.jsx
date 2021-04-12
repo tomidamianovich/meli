@@ -1,8 +1,9 @@
 import React from "react";
+import { getFormattedPrice } from "../../../utils/helpers";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTruck } from "@fortawesome/free-solid-svg-icons";
 
-export const ProductItem = ({
-   item 
-  }) => {
+export const ProductListItem = ({ item }) => {
   return (
     <div className="ui-product-item">
       <a href={`/items/${item.id}`}>
@@ -15,7 +16,13 @@ export const ProductItem = ({
         </div>
         <div className="ui-product-item__description-container">
           <p className="ui-product-item__description-container__value-price">
-            $ {item.price.amount}
+            {getFormattedPrice(item.price)}
+            { item.free_shipping && 
+              <FontAwesomeIcon
+                icon={faTruck} 
+                className="ui-product-item__description-container__free-shipping-icon"
+                />
+            }
           </p>
           <p className="ui-product-item__description-container__value-title">
             {item.title}

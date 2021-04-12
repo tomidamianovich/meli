@@ -1,12 +1,12 @@
 import React from "react";
 import axios from "axios";
-import { urlGetter } from "../../../utils/urlGetter";
+import { urlGetter } from "../../../utils/helpers";
 import { constants } from "../../../utils/constants";
 import { SearchForm } from "../../Main/SearchForm";
 import { useLocation } from "react-router-dom";
-import { ProductBreadcrumbs } from "../ProductBreadcrumbs"
-import { ProductItem } from "../ProductItem"
-import { ProductNotFound } from "../ProductNotFound"
+import { ProductBreadcrumbs } from "../ProductBreadcrumbs";
+import { ProductListItem } from "../ProductListItem";
+import { ProductNotFound } from "../ProductNotFound";
 
 export class ProductsList extends React.Component {
   constructor(props) {
@@ -92,10 +92,7 @@ export class ProductsList extends React.Component {
     const { items, breadcrumbs_route, appUrl } = this.state.data;
     return (
       <div className="ui-product-list">
-        <SearchForm
-          initialValue={this.getInitialValue}
-          actionValue={appUrl}
-          />
+        <SearchForm initialValue={this.getInitialValue} actionValue={appUrl} />
         {isLoading ? (
           "loading..."
         ) : (
@@ -109,7 +106,9 @@ export class ProductsList extends React.Component {
             {data && !!items.length && (
               <div className="ui-product-list__body__items-container">
                 <ProductBreadcrumbs route={breadcrumbs_route} />
-                {items.map((item) => <ProductItem item={item} key={item.id} /> )}
+                {items.map((item) => (
+                  <ProductListItem item={item} key={item.id} />
+                ))}
               </div>
             )}
           </div>

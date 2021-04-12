@@ -34,7 +34,7 @@ function getProductDetailHandler (response, plainText, categories) {
       picture: thumbnail,
       condition: condition,
       free_shipping:
-        constants.MELI_API_URLS.SHIPPING.FREE_SHIPING in shipping
+        constants.MELI_API_URLS.SHIPPING.FREE_SHIPPING in shipping
           ? shipping.free_shipping
           : undefined,
       sold_quantity: sold_quantity,
@@ -103,9 +103,9 @@ function getProductListHandler (response) {
       },
       picture: thumbnail,
       condition: condition,
-      free_shipping: constants.MELI_API_URLS.SHIPPING.FREE_SHIPING in shipping 
+      free_shipping: constants.MELI_API_URLS.SHIPPING.FREE_SHIPPING in shipping 
         ? shipping.free_shipping
-        : undefined,
+        : false,
       province: address.state_name
     };
     return [...acc, newItem];

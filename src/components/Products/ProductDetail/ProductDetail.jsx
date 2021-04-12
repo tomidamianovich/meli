@@ -1,11 +1,11 @@
 import React from "react";
 import axios from "axios";
-import { urlGetter } from "../../../utils/urlGetter";
+import { urlGetter } from "../../../utils/helpers";
 import { constants } from "../../../utils/constants";
 import { SearchForm } from "../../Main/SearchForm";
-import { ProductBreadcrumbs } from "../ProductBreadcrumbs"
-import { ProductDetailInfo } from "../ProductDetailInfo"
-import { ProductNotFound } from "../ProductNotFound"
+import { ProductBreadcrumbs } from "../ProductBreadcrumbs";
+import { ProductDetailInfo } from "../ProductDetailInfo";
+import { ProductNotFound } from "../ProductNotFound";
 
 export class ProductDetail extends React.Component {
   constructor(props) {
@@ -76,20 +76,20 @@ export class ProductDetail extends React.Component {
     const { item, status, appUrl } = data;
     return (
       <div className="ui-product-detail">
-        <SearchForm
-          initialValue={this.getInitialValue}
-          actionValue={appUrl}
-          />
+        <SearchForm initialValue={this.getInitialValue} actionValue={appUrl} />
         {isLoading ? (
-          <p>loading...</p>
+          <ProductNotFound
+            message={constants.LOADING.MESSAGE}
+            variant={constants.LOADING.VARIANT}
+          />
         ) : (
           <div className="ui-product-detail__body">
-            {(!data || status === 404) && 
+            {(!data || status === 404) && (
               <ProductNotFound
                 message={constants.PRODUCT_NOT_FOUND.MESSAGE}
                 variant={constants.PRODUCT_NOT_FOUND.VARIANT}
               />
-            }
+            )}
             {data && item && (
               <div>
                 <ProductBreadcrumbs route={item.breadcrumbs_route} />

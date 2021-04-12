@@ -24,7 +24,7 @@ const app = express();
 
 // serve static assets
 app.get(
-  /\.(js|css|map|ico)$/,
+  /\.(js|css|map|ico|png)$/,
   express.static(path.resolve(__dirname, "../dist"))
 );
 
@@ -152,7 +152,7 @@ app.use("/items", async (req, res) => {
 });
 
 /* For any other request we will be sending an `index.html` as a response. */
-app.use("*", async (req, res) => {
+app.use("/", async (req, res) => {
   res.contentType("text/html");
   res.status(200);
   return res.send(await ssrViewHandler(req.originalUrl));
