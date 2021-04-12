@@ -11,7 +11,13 @@ import { SearchForm } from "../../Main/SearchForm";
 import { ProductDetail } from "../../Products/ProductDetail";
 import { ProductsList } from "../../Products/ProductsList";
 
-// export main home application component
+/*
+  This method is the main component of the application, it will handle the routing logic
+  and redirects to the proper component. All this routes will be used in the server side
+  to match a route declared in the server/routes.js module in order to make the server
+  side rendering of each component.
+*/
+
 export class Home extends React.Component {
 
   constructor(props) {

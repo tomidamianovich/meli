@@ -6,8 +6,13 @@ import { SearchForm } from "../../Main/SearchForm";
 import { useLocation } from "react-router-dom";
 import { ProductBreadcrumbs } from "../ProductBreadcrumbs";
 import { ProductListItem } from "../ProductListItem";
-import { ProductNotFound } from "../ProductNotFound";
+import { AlertMessage } from "../AlertMessage";
 
+/*
+  This method will show all the values retrieved while searching, is class components
+  without hoooks due to we need to use componentdidmount that is not the same that useEffect
+  to use react server side rendering (Mainly the static method fetchData is needed).
+*/
 export class ProductsList extends React.Component {
   constructor(props) {
     super();
@@ -98,7 +103,7 @@ export class ProductsList extends React.Component {
         ) : (
           <div className="ui-product-list__body">
             {(!data || !items.length || data.status === 404) && (
-              <ProductNotFound
+              <AlertMessage
                 message={constants.ZERO_PRODUCTS_FOUND.MESSAGE}
                 variant={constants.ZERO_PRODUCTS_FOUND.VARIANT}
               />

@@ -5,6 +5,10 @@ import {
   getFormattedCents
  } from "../../../utils/helpers";
 
+/*
+  This Method will recieve the product (item) as a props and will show the item values.
+*/
+
 export const ProductDetailInfo = ({
    item 
   }) => {

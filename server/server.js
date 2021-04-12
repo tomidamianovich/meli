@@ -151,8 +151,9 @@ app.use("/items", async (req, res) => {
   return res.send(await ssrViewHandler(exactUrl, req.query.search, appBaseUrl));
 });
 
-/* For any other request we will be sending an `index.html` as a response. */
-app.use("/", async (req, res) => {
+/* For any other request we will be sending an `index.html` as a response. Despite of that
+in the front we will redirect to search main page (path "/") */
+app.use("*", async (req, res) => {
   res.contentType("text/html");
   res.status(200);
   return res.send(await ssrViewHandler(req.originalUrl));
