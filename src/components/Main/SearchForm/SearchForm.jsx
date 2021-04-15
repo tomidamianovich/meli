@@ -51,9 +51,10 @@ export const SearchForm = ({
             placeholder={inputPlaceholder}
             onChange={handleChangeValue}
             value={searchValue}
-          />
+            />
           <button
             type="submit"
+            disabled={!searchValue.length}
             className="ui-search__form__input-container__submit"
           >
             <FontAwesomeIcon icon={faSearch} />
