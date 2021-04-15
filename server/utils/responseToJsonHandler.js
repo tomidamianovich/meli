@@ -108,8 +108,21 @@ function getProductListHandler (response) {
         : false,
       province: address.state_name
     };
+    console.log(newItem)
     return [...acc, newItem];
   }, []);
+
+
+  console.log({
+    author: {
+      name: NAME,
+      lastname: LASTNAME,
+    },
+    categories: categories ? categories : [],
+    items: items,
+    breadcrumbs_route: greatherResultsCategory,
+    appUrl: `${constants.APP_URL.PATH}:${constants.APP_URL.PORT}/items`
+  })
 
   return {
     author: {

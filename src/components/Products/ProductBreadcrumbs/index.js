@@ -1,2 +1,2 @@
-import './ProductBreadcrumbs.style';
+import './ProductBreadcrumbs.style.scss';
 export * from './ProductBreadcrumbs';

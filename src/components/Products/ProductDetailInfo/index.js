@@ -1,2 +1,2 @@
-import './ProductDetailInfo.style';
+import './ProductDetailInfo.style.scss';
 export * from './ProductDetailInfo';

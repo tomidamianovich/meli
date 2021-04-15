@@ -17,7 +17,7 @@ export const SearchForm = ({
   initialValue = "", // If we are coming for a previous search we inicialize this value.
   actionValue // If we are currently in a previous search we need to handle the form action.
 }) => {
-  const [searchValue, setSeachValue] = useState("");
+  const [searchValue, setSeachValue] = useState(initialValue | "");
 
   // Each time the input changes his value we store the value in the component state.
   const handleChangeValue = (event) => {
@@ -25,17 +25,13 @@ export const SearchForm = ({
     setSeachValue(event.target.value);
   };
 
-  // Initially setting the search value when the initial value is defined.
-  useEffect(() => {
-    setSeachValue(initialValue);
-  }, [initialValue, setSeachValue]);
-
   return (
     <div className="ui-search">
       <form
         className="ui-search__form"
         action={actionValue || "items"}
         method="get"
+        data-testid="search-form"
       >
         <Link to={{ pathname: "/" }}>
           <img

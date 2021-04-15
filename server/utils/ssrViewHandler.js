@@ -76,6 +76,8 @@ async function ssrViewHandler (urlToMatch, fetchDataParam, appBaseUrl)  {
     </StaticRouter>
   );
 
+  console.log(componentData)
+
   /* After Getting the HTML string from the `Home` component (Main component) we are
     Populating `#home` element (our react main div) with `appHTML` in order that 
     search engines crawlers could use it */

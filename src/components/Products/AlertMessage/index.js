@@ -1,2 +1,2 @@
-import './AlertMessage.style';
+import './AlertMessage.style.scss';
 export * from './AlertMessage';

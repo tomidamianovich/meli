@@ -96,10 +96,13 @@ export class ProductsList extends React.Component {
     const { isLoading, data } = this.state;
     const { items, breadcrumbs_route, appUrl } = this.state.data;
     return (
-      <div className="ui-product-list">
+      <div className="ui-product-list" data-testid="product-list-container">
         <SearchForm initialValue={this.getInitialValue} actionValue={appUrl} />
         {isLoading ? (
-          "loading..."
+          <AlertMessage
+            message={constants.LOADING.MESSAGE}
+            variant={constants.LOADING.VARIANT}
+          />
         ) : (
           <div className="ui-product-list__body">
             {(!data || !items.length || data.status === 404) && (
@@ -109,7 +112,7 @@ export class ProductsList extends React.Component {
               />
             )}
             {data && !!items.length && (
-              <div className="ui-product-list__body__items-container">
+              <div className="ui-product-list__body__items-container"  data-testid="product-list-container">
                 <ProductBreadcrumbs route={breadcrumbs_route} />
                 {items.map((item) => (
                   <ProductListItem item={item} key={item.id} />
