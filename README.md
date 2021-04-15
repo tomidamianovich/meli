@@ -19,7 +19,7 @@ This project was developed with [React JS](https://es.reactjs.org/) and with [Ex
   - [React Testing Library](https://testing-library.com/): Simple and complete testing utilities that encourage good testing practices
   - [testing-library jest-dom](https://www.npmjs.com/package/@testing-library/jest-dom): Custom jest matchers to test the state of the DOM.
   - [React test rendender](https://es.reactjs.org/docs/test-renderer.html): Este paquete proporciona un procesador de React que se puede usar para procesar componentes de React a objetos JavaScript puros, sin depender del DOM o de un entorno móvil nativo.
-  - [Jest] (https://jestjs.io/):JavaScript Testing Framework
+  - [Jest](https://jestjs.io/):JavaScript Testing Framework
 
 
 
