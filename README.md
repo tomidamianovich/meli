@@ -16,6 +16,14 @@ This project was developed with [React JS](https://es.reactjs.org/) and with [Ex
   - [Axios](https://www.npmjs.com/package/axios): Manage http request
   - [Saas](https://sass-lang.com/): Preproccesor for styles
   - [BEM Methology](http://getbem.com/): Styles structure organization purposes.
+  - [React Testing Library](https://testing-library.com/): Simple and complete testing utilities that encourage good testing practices
+  - [testing-library jest-dom](https://www.npmjs.com/package/@testing-library/jest-dom): Custom jest matchers to test the state of the DOM.
+  - [React test rendender](https://es.reactjs.org/docs/test-renderer.html): Este paquete proporciona un procesador de React que se puede usar para procesar componentes de React a objetos JavaScript puros, sin depender del DOM o de un entorno móvil nativo.
+  - [Jest] (https://jestjs.io/):JavaScript Testing Framework
+
+
+
+
 
 # Explanation of the structure of the proyect
 
@@ -57,11 +65,19 @@ Although the structure of the project is not a single answer question and that t
 
 6. run "npm run start"
 
-# How to run all the test (To be Implemented)
+# How to run all the test
   1. Open a new terminal in your repositories folder
   2. run "npm run test"
 
-# How to run an specific test (To be Implemented)
+# How to run an specific test
   1. Open a new terminal in your repositories folder
-  2. run "npm run test <ComponentName>"
-  Example npm run test Header
+  2. run "npm run test -- "<ComponentName>.test.jsx" (Add -u at last part to update the snapshot if you change a component).
+  Example npm run test -- "ProductList.test.jsx"
+
+# How to run a coverage test
+  1. Open a new terminal in your repositories folder
+  2. run "npm run test:coverage"
+  3. You will see the coverage of all the files at the console, and in the root path 
+    you could also see a new folder that has inside a folder called "lcov-report" that 
+    has inside an "index.html" file that will show you extra information about the lines
+    that where coverage in each file and so on.
