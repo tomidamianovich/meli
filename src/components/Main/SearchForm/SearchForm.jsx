@@ -36,6 +36,7 @@ export const SearchForm = ({
         className="ui-search__form"
         action={actionValue || "items"}
         method="get"
+        data-testid="search-form"
       >
         <Link to={{ pathname: "/" }}>
           <img

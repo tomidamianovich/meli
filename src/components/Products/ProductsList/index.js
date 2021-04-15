@@ -1,2 +1,2 @@
-import './ProductsList.style';
+import './ProductsList.style.scss';
 export * from './ProductsList';

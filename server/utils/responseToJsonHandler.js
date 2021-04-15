@@ -47,7 +47,7 @@ function getProductDetailHandler (response, plainText, categories) {
 }
 
 
-function getProductListHandler (response) {
+function getProductListHandler (response, searchParam) {
   const dataParsed = JSON.parse(response);
   /* From the endpoint a lot of filters are currently coming, we need the info coming
      as categories so we are filtering the categories filter and the making a js reduce 
@@ -119,7 +119,8 @@ function getProductListHandler (response) {
     categories: categories ? categories : [],
     items: items,
     breadcrumbs_route: greatherResultsCategory,
-    appUrl: `${constants.APP_URL.PATH}:${constants.APP_URL.PORT}/items`
+    appUrl: `${constants.APP_URL.PATH}:${constants.APP_URL.PORT}/items`,
+    searchParam
   };
 }
 

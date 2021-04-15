@@ -9,17 +9,17 @@ import { faTruck } from "@fortawesome/free-solid-svg-icons";
 
 export const ProductListItem = ({ item }) => {
   return (
-    <div className="ui-product-item">
+    <div className="ui-product-item" data-testid="product-item-container">
       <a href={`/items/${item.id}`}>
         <div className="ui-product-item__image-container">
           <img
             src={item.picture}
-            alt="item picture"
+            alt="Imagen del Producto"
             className="ui-product-item__image-container__image"
           />
         </div>
-        <div className="ui-product-item__description-container">
-          <p className="ui-product-item__description-container__value-price">
+        <div className="ui-product-item__description-container" data-testid="description-container">
+          <p className="ui-product-item__description-container__value-price" data-testid="price-value">
             {getFormattedPrice(item.price)}
             { item.free_shipping && 
               <FontAwesomeIcon
@@ -28,11 +28,11 @@ export const ProductListItem = ({ item }) => {
                 />
             }
           </p>
-          <p className="ui-product-item__description-container__value-title">
+          <p className="ui-product-item__description-container__value-title" data-testid="product-title">
             {item.title}
           </p>
         </div>
-        <div className="ui-product-item__province-container">
+        <div className="ui-product-item__province-container" data-testid="province-container">
           <p className="ui-product-item__province-container__value-province">
             {item.province}
           </p>

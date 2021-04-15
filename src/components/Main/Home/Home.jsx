@@ -19,7 +19,7 @@ import { ProductsList } from "../../Products/ProductsList";
 */
 
 export class Home extends React.Component {
-
+  
   constructor(props) {
     super();
   }
@@ -39,7 +39,7 @@ export class Home extends React.Component {
           <Route
             path="/items"
             exact={true}
-            render={(props) => <ProductsList {...props} />}
+            render={(props) => <ProductsList {...props}  />}
           />
           <Route
             path="/items/:id"

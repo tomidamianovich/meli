@@ -6,14 +6,14 @@ import React from "react";
 */
 
 export const AlertMessage = ({
-   message = "",
+   message,
    variant = "default"
   }) => {
-  return  message && (
-    <div className={`ui-not-found-page ui-not-found-page--${variant}`}>
+  return  message && !!message.length ? (
+    <div className={`ui-not-found-page ui-not-found-page--${variant}`} data-testid="alert-container">
       <p className={`ui-not-found-page--${variant}__text`}>
         { message }
       </p>
     </div>
-  )
+  ) : null
 };
