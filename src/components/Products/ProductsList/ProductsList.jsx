@@ -45,8 +45,6 @@ export class ProductsList extends React.Component {
         data: {},
       };
     }
-    this.getInitialValue = this.getInitialValue.bind(this);
-    // this.getItemsPath = this.getItemsPath.bind(this);
   }
 
   // fetch data
@@ -75,10 +73,6 @@ export class ProductsList extends React.Component {
       });
   }
 
-  getInitialValue() {
-    let query = new URLSearchParams(useLocation().search);
-    return query.get("search");
-  }
 
   // when component mounts, fetch data
   componentDidMount() {
@@ -94,12 +88,15 @@ export class ProductsList extends React.Component {
 
   render() {
     const { isLoading, data } = this.state;
-    const { items, breadcrumbs_route, appUrl } = this.state.data;
+    const { items, breadcrumbs_route, appUrl, searchParam } = this.state.data;
     return (
-      <div className="ui-product-list">
-        <SearchForm initialValue={this.getInitialValue} actionValue={appUrl} />
+      <div className="ui-product-list" data-testid="product-list-container">
+        <SearchForm initialValue={searchParam} actionValue={appUrl} />
         {isLoading ? (
-          "loading..."
+          <AlertMessage
+            message={constants.LOADING.MESSAGE}
+            variant={constants.LOADING.VARIANT}
+          />
         ) : (
           <div className="ui-product-list__body">
             {(!data || !items.length || data.status === 404) && (
@@ -109,7 +106,7 @@ export class ProductsList extends React.Component {
               />
             )}
             {data && !!items.length && (
-              <div className="ui-product-list__body__items-container">
+              <div className="ui-product-list__body__items-container"  data-testid="product-list-container">
                 <ProductBreadcrumbs route={breadcrumbs_route} />
                 {items.map((item) => (
                   <ProductListItem item={item} key={item.id} />

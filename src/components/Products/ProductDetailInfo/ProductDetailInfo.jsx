@@ -19,7 +19,7 @@ export const ProductDetailInfo = ({
   }
 
   return (
-    <div className="ui-product-detail-info">
+    <div className="ui-product-detail-info" data-testid="product-detail-info-container">
       <div className="ui-product-detail-info__main">
         <div className="ui-product-detail-info__main__image-container">
           <img 
@@ -28,14 +28,14 @@ export const ProductDetailInfo = ({
             alt="Imagen del Producto"
           />
         </div>
-        <div className="ui-product-detail-info__main__values">
-          <p className="ui-product-detail-info__main__values--condition">
+        <div className="ui-product-detail-info__main__values" data-testid="main-values-container">
+          <p className="ui-product-detail-info__main__values--condition" data-testid="condition-value">
             { getConditionAndSells(item.condition, item.sold_quantity) }
           </p>
-          <p className="ui-product-detail-info__main__values--title">
+          <p className="ui-product-detail-info__main__values--title" data-testid="product-name-value">
             {item.title}
           </p>
-          <div className="ui-product-detail-info__main__values__price-container">
+          <div className="ui-product-detail-info__main__values__price-container" data-testid="price-value">
             <span className="ui-product-detail-info__main__values__price-container--amount">
               { getFormattedPrice(item.price) }
             </span>
@@ -51,11 +51,11 @@ export const ProductDetailInfo = ({
           </button>
         </div>
       </div>
-      <div className="ui-product-detail-info__description">
+      <div className="ui-product-detail-info__description" data-testid="description-container">
         <h2 className="ui-product-detail-info__description__title">
           Descripción del producto
         </h2>
-        <p className="ui-product-detail-info__description__value">
+        <p className="ui-product-detail-info__description__value" data-testid="description-value">
           {item.description}
         </p>
       </div>

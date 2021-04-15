@@ -69,7 +69,7 @@ export class ProductDetail extends React.Component {
     /* If the current "isLoading" state value is false, we dont fetch the data. 
     if not return pattern used as a good practice to decrease indention level */
     if (!this.state.isLoading) return;
-    ProductDetails.fetchData().then((data) =>
+    ProductDetail.fetchData().then((data) =>
       this.setState({
         isLoading: false,
         data,
@@ -81,10 +81,10 @@ export class ProductDetail extends React.Component {
     const { isLoading, data } = this.state;
     const { item, status, appUrl } = data;
     return (
-      <div className="ui-product-detail">
+      <div className="ui-product-detail" data-testid="product-detail-container">
         <SearchForm initialValue={this.getInitialValue} actionValue={appUrl} />
         {isLoading ? (
-          <ProductNotFound
+          <AlertMessage
             message={constants.LOADING.MESSAGE}
             variant={constants.LOADING.VARIANT}
           />
@@ -97,7 +97,7 @@ export class ProductDetail extends React.Component {
               />
             )}
             {data && item && (
-              <div>
+              <div data-testid="product-detail-item-container">
                 <ProductBreadcrumbs route={item.breadcrumbs_route} />
                 <ProductDetailInfo item={item} />
               </div>

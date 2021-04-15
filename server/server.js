@@ -47,7 +47,7 @@ app.get("/api/items", (req, res) => {
     // A chunk of data has been received.
     resp.on("data", (chunk) => data += chunk);
     // The whole response has been received. Response with the data parsed
-    resp.on("end", () => res.status(200).send(getProductListHandler(data)));
+    resp.on("end", () => res.status(200).send(getProductListHandler(data, req.query.search)));
   })
   .on("error", (err) => res.status(404).send(err));
 });
